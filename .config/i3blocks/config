@@ -1,0 +1,122 @@
+# i3blocks config file
+#
+# Please see man i3blocks for a complete reference!
+# The man page is also hosted at http://vivien.github.io/i3blocks
+#
+# List of valid properties:
+#
+# align
+# color
+# command
+# full_text
+# instance
+# interval
+# label
+# min_width
+# name
+# separator
+# separator_block_width
+# short_text
+# signal
+# urgent
+
+# Global properties
+separator_block_width=15
+
+[spotify]
+label=:
+command=/home/joey/Dropbox/dotfiles/i3blocks/spotify.py
+interval=5
+signal=12
+
+[keyindicator]
+instance=CAPS
+command=/home/joey/.config/i3blocks/blocklets/keyindicator
+interval=once
+signal=11
+
+[keyindicator]
+instance=NUM
+command=/home/joey/.config/i3blocks/blocklets/keyindicator
+interval=once
+signal=11
+
+[volume]
+label=VOL
+instance=Master
+command=/home/joey/.config/i3blocks/blocklets/volume 5% pulse
+interval=once
+signal=10
+
+[memory]
+label=MEM
+command=/home/joey/.config/i3blocks/blocklets/memory
+interval=5
+
+[swap]
+label=SWAP
+instance=swap
+command=/home/joey/.config/i3blocks/blocklets/memory
+interval=5
+
+[disk-root]
+label=/
+instance=/
+command=/home/joey/.config/i3blocks/blocklets/disk
+interval=5
+
+[disk-home]
+label=~
+instance=/home/
+command=/home/joey/.config/i3blocks/blocklets/disk
+interval=5
+
+[ssid]
+label=
+command=echo "$(iw dev wlan0 link | grep SSID | cut -d " " -f 2-)"
+color=#00FF00
+separator=false
+interval=5
+
+[wireless]
+label=IP:
+instance=wlan0
+command=/home/joey/.config/i3blocks/blocklets/wifi
+color=#00FF00
+separator=false
+interval=5
+
+[strength]
+command=echo "$(iw dev wlan0 link | grep signal | cut -d " " -f 2-)"
+interval=5
+color=#00FF00
+
+[ethernet]
+label=:
+command=/home/joey/.config/i3blocks/blocklets/iface
+color=#00FF00
+interval=2
+
+[bandwidth]
+command=/home/joey/.config/i3blocks/blocklets/bandwidth -i Down: -o Up:
+interval=5
+min_width=Down: 100K Up: 100K
+
+[cpu]
+label=CPU:
+command=/home/joey/.config/i3blocks/blocklets/cpu_usage -w 60 -c 90
+interval=3
+min_width=CPU: 100.00%
+
+[load]
+command=/home/joey/.config/i3blocks/blocklets/load_average
+interval=2
+
+[temp]
+command=echo "$(sensors coretemp-isa-0000 | awk '/Physical/ {print $4}')"
+interval=5
+color=#b58900
+
+[time]
+command=date '+%Y-%m-%d %H:%M:%S'
+interval=2

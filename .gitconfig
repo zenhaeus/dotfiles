@@ -1,0 +1,25 @@
+[user]
+    email = joeyzenh@gmail.com
+    name = Joey Zenhäusern
+[push]
+    default = simple
+[diff]
+[color]
+    ui = auto
+[alias]
+    wdiff = diff --color-words --ignore-all-space
+    ldiff = difftool -y -t latex
+
+[diff "jupyternotebook"]
+    command = ~/.local/bin/git-nbdiffdriver diff
+[merge "jupyternotebook"]
+    driver = ~/.local/bin/git-nbmergedriver merge %O %A %B %L %P
+    name = jupyter notebook merge driver
+[difftool "nbdime"]
+    cmd = ~/.local/bin/git-nbdifftool diff \"$LOCAL\" \"$REMOTE\"
+[difftool]
+    prompt = false
+[mergetool "nbdime"]
+    cmd = ~/.local/bin/git-nbmergetool merge \"$BASE\" \"$LOCAL\" \"$REMOTE\" \"$MERGED\"
+[mergetool]
+    prompt = false
