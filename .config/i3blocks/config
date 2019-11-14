@@ -25,7 +25,7 @@ separator_block_width=15
 
 [spotify]
 label=:
-command=/home/joey/Dropbox/dotfiles/i3blocks/spotify.py
+command=/home/joey/.config/i3blocks/blocklets/spotify.py
 interval=5
 signal=12
 

@@ -7,7 +7,7 @@
 
 # i3 config file (v4)
 #
-# Please see https://i3wm.org/docs/userguide.html for a complete reference!
+# Please see http://i3wm.org/docs/userguide.html for a complete reference!
 
 set $mod Mod4
 
@@ -43,8 +43,6 @@ bindsym $mod+d exec "rofi -combi-modi window,run,drun -show combi -modi combi"
 bindsym Mod1+Tab exec "rofi -show window"
 # There also is the (new) i3-dmenu-desktop which only displays applications
 # shipping a .desktop file. It is a wrapper around dmenu, so you need that
-# installed.
-# bindsym $mod+d exec --no-startup-id i3-dmenu-desktop
 
 # change focus
 bindsym $mod+h focus left
@@ -94,7 +92,7 @@ bindsym $mod+space focus mode_toggle
 bindsym $mod+a focus parent
 
 # focus the child container
-#bindsym $mod+d focus child
+bindsym $mod+q focus child
 
 # switch to workspace
 bindsym $mod+1 workspace 1
@@ -161,9 +159,9 @@ bar {
         status_command  i3blocks
         position        bottom
         font pango: Terminus, FontAwesome 10
+        # TODO: maybe this font is better:
+        #font pango: fixed, ~/.fonts/ter-powerline-x32n.pcf.gz, FontAwesome 8
 }
-# Start Dropbox
-exec --no-startup-id dropbox start
 
 # Start insync
 exec --no-startup-id insync start
@@ -177,7 +175,13 @@ exec --no-startup-id redshift
 # Start compton
 exec --no-startup-id compton -b
 
+
+# TODO: Maybe this should be in .xinitrc
+# Set keyboard layout
+exec --no-startup-id setxkbmap ch
+
 # Own KeyBindings
+# TODO: maybe change default spotify player to ncspot
 bindsym $mod+m exec --no-startup-id spotify
 bindsym $mod+c exec --no-startup-id google-chrome-stable
 bindsym $mod+o exec google-chrome-stable -incognito
@@ -196,6 +200,7 @@ bindsym --release $mod+b exec exec pkill -SIGRTMIN+12 i3block
 bindsym $mod+p exec --no-startup-id playerctl play-pause
 
 bindsym --release $mod+Print exec "maim -s ~/Pictures/$(date +%s).png"
+bindsym --release Print exec "maim ~/Pictures/$(date +%s).png"
 
 # send signals to i3blocks to CAPS and NUM lock status can be updated
 bindsym --release Caps_Lock exec pkill -SIGRTMIN+11 i3blocks
