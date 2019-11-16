@@ -1,76 +1,12 @@
-# i3blocks config file
-#
-# Please see man i3blocks for a complete reference!
-# The man page is also hosted at http://vivien.github.io/i3blocks
-#
-# List of valid properties:
-#
-# align
-# color
-# command
-# full_text
-# instance
-# interval
-# label
-# min_width
-# name
-# separator
-# separator_block_width
-# short_text
-# signal
-# urgent
-
-# Global properties
-separator_block_width=15
-
-[spotify]
-label=:
-command=~/Dropbox/dotfiles/i3blocks/spotify.py
-interval=5
-signal=12
-
 [brightness]
 label=MON
 command=echo "$(xbacklight -get | cut -z -d . -f 1 | cat && echo '%')"
 interval=once
 signal=11
 
-[volume]
-label=VOL
-instance=Master
-#instance=PCM
-command=~/Dropbox/dotfiles/i3blocks/volume 5% pulse
-interval=once
-signal=10
-
-[memory]
-label=MEM
-command=~/Dropbox/dotfiles/i3blocks/memory
-separator=false
-interval=10
-
-[swap]
-label=SWAP
-instance=swap
-command=~/Dropbox/dotfiles/i3blocks/memory
-interval=30
-
-[disk-home]
-label=~
-instance=/home/
-command=~/Dropbox/dotfiles/i3blocks/disk
-interval=10
-
-[disk-root]
-label=/
-instance=/
-command=~/Dropbox/dotfiles/i3blocks/disk
-interval=10
-
 [ssid]
 label=SSID:
 command=echo "$(iw dev wlp2s0 link | grep SSID | cut -d ':' -f 2)"
-#| sed 's/\"//g')"
 color=#00FF00
 separator=false
 interval=5
@@ -88,32 +24,9 @@ command=echo "$(iw dev wlp2s0 station dump | grep 'tx bitrate' | cut -d ':' -f 2
 interval=10
 color=#00FF00
 
-#[ethernet]
-#label=E
-#instance=eth0
-#command=./Dropbox/dotfiles/i3blocks/network
-#color=#00FF00
-#interval=5
-
-[cpu]
-label=CPU:
-command=~/Dropbox/dotfiles/i3blocks/cpu_usage -w 60 -c 90
-interval=2
-min_width=CPU: 100%
-#separator=false
-
-[load]
-command=~/Dropbox/dotfiles/i3blocks/load_average
-interval=4
-
-[temp]
-command=echo "$(sensors coretemp-isa-0000 | grep Package | cut -d' ' -f5)"
-interval=10
-color=#b58900
-
 [battery]
 #label=BAT
-command=~/Dropbox/dotfiles/i3blocks/battery
+command=$SCRIPT_DIR/battery
 separator=false
 interval=10
 
@@ -121,7 +34,3 @@ interval=10
 command=echo "$(cat /sys/class/power_supply/BAT0/power_now | awk '{printf("%3.1f W\n", $1/1000000)}')"
 interval=5
 min_width=10.0 W
-
-[time]
-command=date '+%Y-%m-%d %H:%M:%S'
-interval=2
