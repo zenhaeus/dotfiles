@@ -5,7 +5,7 @@ interval=once
 signal=11
 
 [ssid]
-label=SSID:
+label=📶:
 command=echo "$(iw dev wlp2s0 link | grep SSID | cut -d ':' -f 2)"
 color=#00FF00
 separator=false
@@ -26,7 +26,8 @@ color=#00FF00
 
 [battery]
 #label=BAT
-command=$SCRIPT_DIR/battery
+command=$SCRIPT_DIR/battery2/battery2
+markup=pango
 separator=false
 interval=10
 
