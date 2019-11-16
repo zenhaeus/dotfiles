@@ -1,0 +1,13 @@
+#[wireless]
+#label=IP:
+#instance=wlan0
+#command=$SCRIPT_DIR/wifi/wifi
+#color=#00FF00
+#separator=false
+#interval=5
+
+[ethernet]
+label=ETH:
+command=$SCRIPT_DIR/iface/iface
+color=#00FF00
+interval=2
