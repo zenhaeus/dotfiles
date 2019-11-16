@@ -31,7 +31,7 @@ interval=5
 signal=12
 
 [volume]
-label=Vol:
+#label=Vol:
 instance=Master
 command=$SCRIPT_DIR/volume-pulseaudio/volume-pulseaudio
 interval=once
