@@ -1,0 +1,99 @@
+# i3blocks config file
+#
+# Please see man i3blocks for a complete reference!
+# The man page is also hosted at http://vivien.github.io/i3blocks
+#
+# List of valid properties:
+#
+# align
+# color
+# command
+# full_text
+# instance
+# interval
+# label
+# min_width
+# name
+# separator
+# separator_block_width
+# short_text
+# signal
+# urgent
+
+# Global properties
+
+separator_block_width=15
+
+[spotify]
+label=:
+command=~/.config/i3blocks/blocklets/spotify.py
+interval=5
+signal=12
+
+[volume]
+label=Vol:
+instance=Master
+command=$SCRIPT_DIR/volume-pulseaudio/volume-pulseaudio
+interval=once
+signal=10
+
+[keyindicator]
+markup=pango
+instance=CAPS
+command=$SCRIPT_DIR/keyindicator/keyindicator
+interval=once
+signal=11
+
+[keyindicator]
+markup=pango
+instance=NUM
+command=$SCRIPT_DIR/keyindicator/keyindicator
+interval=once
+signal=11
+
+[memory]
+label=MEM
+command=$SCRIPT_DIR/memory/memory
+interval=5
+
+[swap]
+label=SWAP
+instance=swap
+command=$SCRIPT_DIR/memory/memory
+interval=5
+
+[disk-root]
+label=/
+instance=/
+command=$SCRIPT_DIR/disk/disk
+interval=5
+
+[disk-home]
+label=~
+instance=/home/
+command=$SCRIPT_DIR/disk/disk
+interval=5
+
+[bandwidth]
+command=$SCRIPT_DIR/bandwidth3/bandwidth3
+interval=5
+
+[cpu]
+label=CPU: 
+command=$SCRIPT_DIR/cpu_usage/cpu_usage -w 60 -c 90 -d 0
+align=right
+interval=3
+min_width=CPU: 100%
+
+[load]
+command=$SCRIPT_DIR/load_average/load_average
+interval=3
+
+[temp]
+command=echo "$(sensors coretemp-isa-0000 | grep Package | cut -d' ' -f5)"
+interval=5
+color=#b58900
+
+[time]
+command=date '+%Y-%m-%d %H:%M:%S'
+interval=2
