@@ -1,18 +1,17 @@
 [brightness]
-label=MON
+label= 
 command=echo "$(xbacklight -get | cut -z -d . -f 1 | cat && echo '%')"
 interval=once
 signal=11
 
 [ssid]
-label=📶:
+label= 
 command=echo "$(iw dev wlp2s0 link | grep SSID | cut -d ':' -f 2)"
 color=#00FF00
 separator=false
 interval=5
 
 [wireless]
-label=IP:
 instance=wlan0
 command=echo "$(ip address show dev wlp2s0 | grep 'inet ' | awk '{print $2}')"
 color=#00FF00

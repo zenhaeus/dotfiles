@@ -64,20 +64,25 @@ command=$SCRIPT_DIR/memory/memory
 interval=5
 
 [disk-root]
-label=/
+label=/ 
 instance=/
 command=$SCRIPT_DIR/disk/disk
 interval=5
 
 [disk-home]
-label=~
+label=~ 
 instance=/home/
 command=$SCRIPT_DIR/disk/disk
 interval=5
 
 [bandwidth]
-command=$SCRIPT_DIR/bandwidth3/bandwidth3
-interval=persistent
+command=$SCRIPT_DIR/bandwidth3/bandwidth3 -u MB -p 'printf "%s/s: %4.1f / %4.1f\n", unit, rx, wx;'
+interval=persist
+markup=pango
+
+[cpu]
+label= 
+interval=once
 
 [cpu]
 label= 
