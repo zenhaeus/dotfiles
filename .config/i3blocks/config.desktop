@@ -7,7 +7,7 @@
 #interval=5
 
 [ethernet]
-label=ETH:
+label=:
 command=$SCRIPT_DIR/iface/iface
 color=#00FF00
 interval=2

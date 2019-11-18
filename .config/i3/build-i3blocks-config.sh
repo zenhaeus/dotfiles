@@ -1,13 +1,15 @@
 #!/bin/bash
 
-BASE_CONFIG=~/.config/i3blocks/config.base
 CONFIG=~/.config/i3blocks/config
+CONFIG_BASE=~/.config/i3blocks/config.base
+CONFIG_DESKTOP=~/.config/i3blocks/config.desktop
+CONFIG_LAPTOP=~/.config/i3blocks/config.laptop
 
 NODE=$(uname -n)
 if [ "$NODE" = "joey-desktop" ]; then
-    cat $BASE_CONFIG ~/.config/i3blocks/config.desktop > $CONFIG
+    cat $CONFIG_BASE $CONFIG_DESKTOP > $CONFIG
 elif [ "$NODE" = "carbon-joey" ]; then
-    cat $BASE_CONFIG ~/.config/i3blocks/config.laptop > $CONFIG
+    cat $CONFIG_BASE $CONFIG_LAPTOP > $CONFIG
 else
-    cat $BASE_CONFIG > $CONFIG
+    cat $CONFIG_BASE > $CONFIG
 fi

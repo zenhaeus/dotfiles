@@ -36,6 +36,7 @@ instance=Master
 command=$SCRIPT_DIR/volume-pulseaudio/volume-pulseaudio
 interval=once
 signal=10
+markup=pango
 
 [keyindicator]
 markup=pango
@@ -52,12 +53,12 @@ interval=once
 signal=11
 
 [memory]
-label=MEM
+label= 
 command=$SCRIPT_DIR/memory/memory
 interval=5
 
 [swap]
-label=SWAP
+label= 
 instance=swap
 command=$SCRIPT_DIR/memory/memory
 interval=5
@@ -76,14 +77,14 @@ interval=5
 
 [bandwidth]
 command=$SCRIPT_DIR/bandwidth3/bandwidth3
-interval=5
+interval=persistent
 
 [cpu]
-label=CPU: 
+label= 
 command=$SCRIPT_DIR/cpu_usage/cpu_usage -w 60 -c 90 -d 0
 align=right
 interval=3
-min_width=CPU: 100%
+min_width= 100%
 
 [load]
 command=$SCRIPT_DIR/load_average/load_average

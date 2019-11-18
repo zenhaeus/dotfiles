@@ -161,9 +161,7 @@ exec_always --no-startup-id ~/.config/i3/build-i3blocks-config.sh
 bar {
         status_command  SCRIPT_DIR=/usr/lib/i3blocks i3blocks
         position        bottom
-        font pango:     FontAwesome 10, Terminus
-        # TODO: maybe this font is better:
-        #font pango: fixed, FontAwesome 8
+        font pango:     Font Awesome 5 Free 10
 }
 
 # Start insync
