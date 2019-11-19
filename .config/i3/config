@@ -168,7 +168,7 @@ bar {
 exec --no-startup-id insync start
 
 # Set Wallpapers
-exec --no-startup-id nitrogen --restore
+exec --no-startup-id nitrogen --set-zoom-fill --random ~/Pictures/wallpapers
 
 # Start redshift
 exec --no-startup-id redshift
