@@ -27,8 +27,7 @@ def print_song_artis(dbus_object):
 bus = dbus.SessionBus()
 for player in ['spotify', 'ncspot']:
     dbus_object = get_object(bus, player)
-
-if dbus_object is not None:
-    print_song_artis(dbus_object)
+    if dbus_object is not None:
+        print_song_artis(dbus_object)
 
 
