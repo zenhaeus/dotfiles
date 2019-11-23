@@ -25,10 +25,17 @@
 separator_block_width=15
 
 [spotify]
-label=:
+label= 
 command=~/.config/i3blocks/blocklets/spotify.py
 interval=5
 signal=12
+
+[light]
+label= 
+command=~/.config/i3blocks/blocklets/lifx.py get
+interval=20
+min_width= 100%
+signal=10
 
 [volume]
 #label=Vol:
