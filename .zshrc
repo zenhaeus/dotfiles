@@ -4,7 +4,7 @@ export PATH=$HOME/.local/bin:$PATH
 export PATH=$HOME/.cargo/bin:$PATH
 
 # Path to your oh-my-zsh installation.
-  export ZSH="/home/joey/.oh-my-zsh"
+export ZSH="/home/joey/.oh-my-zsh"
 
 # Set name of the theme to load --- if set to "random", it will
 # load a random theme each time oh-my-zsh is loaded, in which case,
@@ -65,7 +65,6 @@ ZSH_THEME="agnoster"
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
 plugins=(
-    git
     zsh-syntax-highlighting
 )
 
@@ -75,14 +74,24 @@ source $ZSH/oh-my-zsh.sh
 source ~/miniconda3/etc/profile.d/conda.sh
 
 # User configuration
-
-# export MANPATH="/usr/local/man:$MANPATH"
+#
+bindkey -v
+autoload -U edit-command-line
+zle -N edit-command-line
+bindkey '^E' edit-command-line                   # Opens Vim to edit current command line
+bindkey '^R' history-incremental-search-backward # Perform backward search in command line history
+bindkey '^S' history-incremental-search-forward  # Perform forward search in command line history
+bindkey '^P' history-search-backward             # Go back/search in history (autocomplete)
+bindkey '^N' history-search-forward              # Go forward/search in history (autocomplete)
+bindkey '^w' backward-kill-word
 
 # You may need to manually set your language environment
 # export LANG=en_US.UTF-8
 
 # Preferred editor for local and remote sessions
 export EDITOR='nvim'
+export VISUAL='nvim'
+export BROWSER=google-chrome-stable
 
 # disable dpi scaling (for alacritty)
 export WINIT_HIDPI_FACTOR=1
@@ -99,6 +108,9 @@ export TERMINAL=alacritty
 # Example aliases
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 alias vim=nvim
+# fox for unavailable aliases when using sudo
+alias sudo='sudo '
+
 alias confvim="vim ~/.config/nvim/init.vim"
 alias confi3="vim ~/.config/i3/config"
 alias confalacritty="vim ~/.config/alacritty/alacritty.yml"
