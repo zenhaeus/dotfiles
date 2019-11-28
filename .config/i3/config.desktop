@@ -1,0 +1,4 @@
+
+#$# SPECIAL:NUM_LOCK
+bindsym --release Num_Lock  exec pkill -SIGRTMIN+11 i3blocks
+#!# END

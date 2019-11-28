@@ -74,8 +74,13 @@ source $ZSH/oh-my-zsh.sh
 source ~/miniconda3/etc/profile.d/conda.sh
 
 # User configuration
-#
+
+# Acvitate vim mode
 bindkey -v
+
+
+
+
 autoload -U edit-command-line
 zle -N edit-command-line
 bindkey '^E' edit-command-line                   # Opens Vim to edit current command line
@@ -84,6 +89,19 @@ bindkey '^S' history-incremental-search-forward  # Perform forward search in com
 bindkey '^P' history-search-backward             # Go back/search in history (autocomplete)
 bindkey '^N' history-search-forward              # Go forward/search in history (autocomplete)
 bindkey '^w' backward-kill-word
+
+precmd() { RPROMPT="" }
+function zle-line-init zle-keymap-select {
+   VIM_PROMPT="%{$fg_bold[yellow]%} [% N ]%  %{$reset_color%}"
+   RPS1="${${KEYMAP/vicmd/$VIM_PROMPT}/(main|viins)/} $EPS1"
+   zle reset-prompt
+}
+
+zle -N zle-line-init
+zle -N zle-keymap-select
+
+export KEYTIMEOUT=1
+
 
 # You may need to manually set your language environment
 # export LANG=en_US.UTF-8
