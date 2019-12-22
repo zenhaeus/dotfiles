@@ -108,10 +108,8 @@ Plug 'bling/vim-airline'
 Plug 'tpope/vim-surround'
 Plug 'junegunn/vim-online-thesaurus'
 
-Plug 'kien/ctrlp.vim'
 Plug 'scrooloose/nerdtree'
 Plug 'junegunn/fzf.vim'
-Plug '/usr/bin/fzf'
 
 Plug 'Xuyuanp/nerdtree-git-plugin'
 Plug 'airblade/vim-gitgutter'
@@ -135,9 +133,7 @@ Plug 'majutsushi/tagbar'
 Plug 'davidhalter/jedi-vim'
 
 Plug 'lervag/vimtex'
-Plug 'derekwyatt/vim-scala'
 Plug 'jalvesaq/Nvim-R'
-Plug 'dansomething/vim-eclim'
 Plug 'mattn/emmet-vim'
 Plug 'cjrh/vim-conda'
 Plug 'vim-python/python-syntax'
@@ -192,6 +188,9 @@ let g:jedi#show_call_signatures = "1"
 
 " Python Syntax
 let python_highlight_all=1
+
+let g:python_host_prog='python2'
+let g:python3_host_prog='python'
 
 " Molokai
 colorscheme molokai
