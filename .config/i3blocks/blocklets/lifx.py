@@ -55,18 +55,19 @@ def level_to_brightness(level):
     """ Convert level (int [0, 100]) to brightness (int [0, 65535])
     """
     # Make sure level is in range
-    if level < 0:
-        level = 0
-    elif level > 100:
-        level = 100
-
-    return int(round(level / 100 * MAX_BRIGHTNESS))
+    return int(round(sorted((0, level, 100))[1] / 100 * MAX_BRIGHTNESS))
 
 
 def main():
     light = lights['Office']
 
     if len(sys.argv) == 2 and sys.argv[1] == 'get':
+        color = light.get_color()
+        level = brightness_to_level(color[2])
+        print(f"{level}%")
+
+    elif len(sys.argv) == 2 and sys.argv[1] == 'disco':
+        # TODO: mmake it disco!!
         color = light.get_color()
         level = brightness_to_level(color[2])
         print(f"{level}%")

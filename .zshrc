@@ -110,6 +110,8 @@ export KEYTIMEOUT=1
 export EDITOR='nvim'
 export VISUAL='nvim'
 export BROWSER=google-chrome-stable
+export DIFFPROG="nvim -d"
+export TERMINFO=/usr/share/terminfo
 
 # disable dpi scaling (for alacritty)
 export WINIT_HIDPI_FACTOR=1
@@ -134,3 +136,17 @@ alias confi3="vim ~/.config/i3/config"
 alias confalacritty="vim ~/.config/alacritty/alacritty.yml"
 alias confzsh="vim ~/.zshrc"
 alias dotfiles='git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
+
+function pdf-compress() {
+    if [ "$1" = "" ]; then
+        echo "Input file missing"
+    elif [ "$2" = "" ]; then
+        echo "Output file is missing"
+    else
+        QUALITY="/prepress"
+        if [ "$3" != "" ]; then
+            QUALITY="$3"
+        fi
+        gs -sDEVICE=pdfwrite -dCompatibilityLevel=1.4 -dPDFSETTINGS="$QUALITY" -dNOPAUSE -dQUIET -dBATCH -sOutputFile="$2" "$1"
+    fi
+}

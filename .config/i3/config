@@ -30,7 +30,7 @@ font -misc-fixed-medium-r-normal--13-120-75-75-C-70-iso10646-1
 floating_modifier $mod
 
 # start a terminal
-bindsym $mod+Return exec "WINIT_HIDPI_FACTOR=1 alacritty"
+bindsym $mod+Return exec alacritty
 
 # kill focused window
 bindsym $mod+Shift+q kill
@@ -197,14 +197,15 @@ bindsym XF86AudioRaiseVolume exec --no-startup-id amixer -D pulse sset Master 5%
 bindsym XF86MonBrightnessDown exec --no-startup-id xbacklight -dec 5 -time 20 -steps 2 && exec pkill -SIGRTMIN+11 i3blocks
 bindsym XF86MonBrightnessUp exec --no-startup-id xbacklight -inc 5 -time 20 -steps 2 && exec pkill -SIGRTMIN+11 i3blocks
 
-bindsym $mod+n exec --no-startup-id playerctl next
+bindsym $mod+n exec --no-startup-id "playerctl -p spotify,ncspot next"
 bindsym --release $mod+n exec exec pkill -SIGRTMIN+12 i3block
-bindsym $mod+b exec --no-startup-id playerctl previous
+bindsym $mod+b exec --no-startup-id "playerctl -p spotify,ncspot previous"
 bindsym --release $mod+b exec exec pkill -SIGRTMIN+12 i3block
-bindsym $mod+p exec --no-startup-id playerctl play-pause
+bindsym $mod+p exec --no-startup-id "playerctl -p spotify,ncspot play-pause"
 
 bindsym --release $mod+Print exec "maim -s ~/Pictures/$(date +%s).png"
 bindsym --release Print exec "maim ~/Pictures/$(date +%s).png"
+bindsym --release $mod+Shift+Print exec "maim -s --format png /dev/stdout | xclip -selection clipboard -t image/png -i"
 
 # send signals to i3blocks to CAPS and NUM lock status can be updated
 bindsym --release Caps_Lock exec pkill -SIGRTMIN+11 i3blocks
