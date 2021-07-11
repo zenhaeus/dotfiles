@@ -12,9 +12,9 @@ TEMPLATE_START_STRING = "#$#"
 TEMPLATE_END_STRING = "#!#"
 
 
-""" Read the special config blocks and store in a dictionary
-"""
 def parse_special(special):
+    """ Read the special config blocks and store in a dictionary
+    """
     special_name = ""
     specials = {}
     for line in special:
@@ -29,11 +29,9 @@ def parse_special(special):
     return specials
 
 
-
-""" Replace all special lines with their blocks in the special config
-
-"""
 def replace_base(base, specials):
+    """ Replace all special lines with their blocks in the special config
+    """
     new_config = []
     for line in base:
         new_config.append(line)

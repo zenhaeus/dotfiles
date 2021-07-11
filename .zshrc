@@ -136,17 +136,56 @@ alias confi3="vim ~/.config/i3/config"
 alias confalacritty="vim ~/.config/alacritty/alacritty.yml"
 alias confzsh="vim ~/.zshrc"
 alias dotfiles='git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
+alias bt='bluetoothctl'
+alias pacdiff='sudo -H DIFFPROG=meld pacdiff'
 
 function pdf-compress() {
-    if [ "$1" = "" ]; then
+    input=$1
+    output=$2
+    quality=$3
+    if [ "$input" = "" ]; then
         echo "Input file missing"
-    elif [ "$2" = "" ]; then
-        echo "Output file is missing"
-    else
-        QUALITY="/prepress"
-        if [ "$3" != "" ]; then
-            QUALITY="$3"
-        fi
-        gs -sDEVICE=pdfwrite -dCompatibilityLevel=1.4 -dPDFSETTINGS="$QUALITY" -dNOPAUSE -dQUIET -dBATCH -sOutputFile="$2" "$1"
+        echo ""
+        echo "Please use the function as follows:"
+        echo ""
+        echo "  pdf-compress input.pdf"
+        echo ""
+        echo "or"
+        echo ""
+        echo "  pdf-compress input.pdf output.pdf"
+        return 1
+    elif [ "$output" = "" ]; then
+        mv $input "$input.old"
+        output=$input
+        input="$input.old"
     fi
+
+    if [ "$quality" = "" ]; then
+        quality="/prepress"
+    fi
+
+    gs -sDEVICE=pdfwrite -dCompatibilityLevel=1.4 -dPDFSETTINGS="$quality" -dNOPAUSE -dQUIET -dBATCH -sOutputFile="$output" "$input"
+    return 0
+}
+
+function pdf-scan-and-compress() {
+    while getopts ":i:r:o:m:" opt; do
+      case $opt in
+        i) input="$OPTARG"
+        ;;
+        r) resolution="$OPTARG"
+        ;;
+        o) output="$OPTARG"
+        ;;
+        m) color="$OPTARG"
+        ;;
+        \?) echo "Invalid option -$OPTARG" >&2
+        ;;
+      esac
+    done
+
+    hp-scan -s pdf -m "$color" -r "$resolution" -x jpeg --size=a4 --$input -o "$output" &&
+        pdf-compress "$output" &&
+        rm "$output.old"
+
 }
