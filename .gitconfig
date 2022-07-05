@@ -23,3 +23,5 @@
     cmd = ~/.local/bin/git-nbmergetool merge \"$BASE\" \"$LOCAL\" \"$REMOTE\" \"$MERGED\"
 [mergetool]
     prompt = false
+[pull]
+	rebase = true
