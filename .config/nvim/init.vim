@@ -138,6 +138,7 @@ Plug 'mattn/emmet-vim'
 Plug 'cjrh/vim-conda'
 Plug 'vim-python/python-syntax'
 Plug 'tomasr/molokai'
+Plug 'rickhowe/diffchar.vim'
 
 call plug#end()
 
